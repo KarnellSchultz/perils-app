@@ -12,22 +12,22 @@ function App() {
 <h2>We have you covered
 </h2>
       {perilData ? (
-        perilData.map((el) => (
-          <div key={el.title}>
-            <h2>{el.title}</h2>
+        perilData.map((peril) => (
+          <div key={peril.title}>
+            <h2>{peril.title}</h2>
             <img
-              src={el.icon.variants.light.svgUrl}
+              src={peril.icon.variants.light.svgUrl}
               height="24px"
-              alt={el.title}
+              alt={peril.title}
             ></img>
-            <p>{el.description}</p>
+            <p>{peril.description}</p>
             <ul>
-              {el.covered.map((covered) => (
+              {peril.covered.map((covered) => (
                 <li> ✅ {covered}</li>
               ))}
             </ul>
             <ul>
-              {el.exceptions.map((exceptions) => (
+              {peril.exceptions.map((exceptions) => (
                 <li> ❌ {exceptions}</li>
               ))}
             </ul>
