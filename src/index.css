@@ -39,6 +39,26 @@ h2 {
   color: #141033;
 }
 
+button {
+  display: flex;
+  width: 100%;
+  -moz-box-align: center;
+  align-items: center;
+  -moz-box-pack: start;
+  justify-content: flex-start;
+  text-align: left;
+  min-height: 3.75rem;
+  margin: 0.5rem 1rem 0.5rem 0.375rem;
+  color: inherit;
+  font-family: inherit;
+  border-radius: 0.375rem;
+  background-color: rgb(255, 255, 255);
+  border: 0px none;
+  cursor: pointer;
+  transition: all 150ms ease-in-out 0s;
+  appearance: none;
+}
+
 .container {
   display: grid;
   gap: 1rem;
@@ -70,4 +90,8 @@ h2 {
 .card:hover {
   box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 16px;
   transform: translateY(-2px);
+}
+
+[data-reach-menu-item] {
+  color: blue;
 }

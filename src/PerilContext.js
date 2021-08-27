@@ -27,7 +27,6 @@ const PerilReducer = (state, { type, payload }) => {
 };
 
 export const PerilContextProvider = ({ children }) => {
-  //   const [state, setState] = React.useState();
   const [state, dispatch] = React.useReducer(PerilReducer, initialState);
 
   React.useEffect(() => {
