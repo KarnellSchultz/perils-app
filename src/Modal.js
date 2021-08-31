@@ -1,6 +1,32 @@
 import React from "react";
+import styled from "styled-components";
 
 import { Dialog } from "@reach/dialog";
+
+const DialogContent = styled.div`
+  border-radius: 0.375rem;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8rem;
+  padding: 1rem;
+
+  ul {
+    padding: 0.5rem;
+  }
+  li {
+    padding-top: 0.3rem;
+  }
+`;
+
+const Title = styled.h3`
+  font-size: 2rem;
+  margin-top: 1rem;
+`;
+
+const Description = styled.p`
+  font-size: 1rem;
+  line-height: 1.3;
+`;
 
 export const Modal = ({ peril, close, showDialog }) => {
   return (
@@ -11,7 +37,7 @@ export const Modal = ({ peril, close, showDialog }) => {
           onDismiss={close}
           aria-label={`label--${peril.title}}`}
         >
-          <div className="modal-list">
+          <DialogContent>
             <img
               src={peril.icon.variants.light.svgUrl}
               height="48px"
@@ -19,11 +45,11 @@ export const Modal = ({ peril, close, showDialog }) => {
               alt={peril.title}
               aria-label={`label--${peril.title}}`}
             ></img>
-            <h3>{peril.title}</h3>
-            <p>{peril.description}</p>
+            <Title>{peril.title}</Title>
+            <Description>{peril.description}</Description>
             <ul>
               {peril.covered.map((coveredItem) => (
-                <li key={coveredItem}>✅ {coveredItem}</li>
+                <li key={coveredItem}>✅ - {coveredItem}</li>
               ))}
             </ul>
             <ul>
@@ -31,7 +57,7 @@ export const Modal = ({ peril, close, showDialog }) => {
                 <li key={exceptionItem}>❌ {exceptionItem}</li>
               ))}
             </ul>
-          </div>
+          </DialogContent>
         </Dialog>
       ) : null}
     </>
