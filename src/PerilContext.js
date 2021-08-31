@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect, useReducer, createContext, useContext } from "react";
 
-const PerilContext = React.createContext();
+const PerilContext = createContext();
 
 const perilUrl =
   "https://hedvig-staging-rest-api.vercel.app/api/perils?contractType=SE_APARTMENT_RENT&locale=en_SE";
@@ -22,26 +22,26 @@ const PerilReducer = (state, { type, payload }) => {
     case Status.done:
       return { ...state, status: Status.done, data: payload };
     default:
-      break;
+      throw new Error(`unknown dispatch value: ${type} `);
   }
 };
 
 export const PerilContextProvider = ({ children }) => {
-  const [state, dispatch] = React.useReducer(PerilReducer, initialState);
+  const [state, dispatch] = useReducer(PerilReducer, initialState);
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetch(perilUrl)
-      .then((res) => res.json())
+      .then((response) => response.json())
       .then((data) => dispatch({ type: Status.done, payload: data }));
   }, []);
-  console.log(state);
+
   return (
     <PerilContext.Provider value={state}>{children}</PerilContext.Provider>
   );
 };
 
 export const usePerilContext = () => {
-  const context = React.useContext(PerilContext);
+  const context = useContext(PerilContext);
   if (context === null) {
     throw new Error("Must be used within a PerilContext Provider");
   }

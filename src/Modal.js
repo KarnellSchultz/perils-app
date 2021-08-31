@@ -11,6 +11,7 @@ export const Modal = ({ children, peril, close, showDialog }) => {
           isOpen={showDialog}
           onDismiss={close}
           aria-label={`label--${peril.title}}`}
+          className="modal-list"
         >
           <img
             src={peril.icon.variants.light.svgUrl}
@@ -18,7 +19,7 @@ export const Modal = ({ children, peril, close, showDialog }) => {
             width="48px"
             alt={peril.title}
           ></img>
-          <p>{peril.title}</p>
+          <h3>{peril.title}</h3>
           <p>{peril.description}</p>
           <ul>
             {peril.covered.map((coveredItem) => (
