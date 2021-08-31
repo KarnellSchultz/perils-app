@@ -22,7 +22,7 @@ function App() {
           info.
         </p>
       </div>
-      
+
       <h3 className="container-heading">Home Insurance Renter</h3>
 
       <Modal showDialog={showDialog} close={close} peril={modalContent} />

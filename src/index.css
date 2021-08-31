@@ -21,7 +21,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
   line-height: 1.25;
-  width: 801px;
+  max-width: 801px;
   padding: 0px;
   margin: 1rem 1rem;
 
@@ -62,7 +62,7 @@ h2 {
 .container {
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(170px, 2fr));
   margin-top: 1rem;
 }
 
@@ -93,11 +93,6 @@ h2 {
   transform: translateY(-2px);
 }
 
-[data-reach-dialog-content] {
-  background-color: blue;
-  width: 60vw;
-}
-
 .heading {
   margin-bottom: 4rem;
   padding-right: 10rem;
@@ -111,6 +106,41 @@ h2 {
   margin-top: 4rem;
   font-size: 1.5rem;
 }
+
+.modal-list {
+  border-radius: 0.375rem;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8rem;
+  padding: 1rem;
+}
+
+.modal-list h3 {
+  font-size: 2rem;
+}
+
+.modal-list ul {
+  padding: 0;
+}
+
+[data-reach-dialog-overlay] {
+  background-color: #06060633;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+[data-reach-dialog-content] {
+  background-color: var(--main-bg-color);
+  width: 90vw;
+  position: absolute;
+  top: 20%;
+  left: 5%;
+  border-radius: 1rem;
+}
+
 @media (max-width: 576px) {
   body {
     /* margin: 1rem; */

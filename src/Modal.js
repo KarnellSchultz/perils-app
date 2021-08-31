@@ -1,9 +1,8 @@
 import React from "react";
 
-import { Dialog, DialogOverlay, DialogContent } from "@reach/dialog";
-import "@reach/dialog/styles.css";
+import { Dialog } from "@reach/dialog";
 
-export const Modal = ({ children, peril, close, showDialog }) => {
+export const Modal = ({ peril, close, showDialog }) => {
   return (
     <>
       {showDialog ? (
@@ -11,26 +10,28 @@ export const Modal = ({ children, peril, close, showDialog }) => {
           isOpen={showDialog}
           onDismiss={close}
           aria-label={`label--${peril.title}}`}
-          className="modal-list"
         >
-          <img
-            src={peril.icon.variants.light.svgUrl}
-            height="48px"
-            width="48px"
-            alt={peril.title}
-          ></img>
-          <h3>{peril.title}</h3>
-          <p>{peril.description}</p>
-          <ul>
-            {peril.covered.map((coveredItem) => (
-              <li key={coveredItem}> ✅ {coveredItem}</li>
-            ))}
-          </ul>
-          <ul>
-            {peril.exceptions.map((exceptionItem) => (
-              <li key={exceptionItem}> ❌ {exceptionItem}</li>
-            ))}
-          </ul>
+          <div className="modal-list">
+            <img
+              src={peril.icon.variants.light.svgUrl}
+              height="48px"
+              width="48px"
+              alt={peril.title}
+              aria-label={`label--${peril.title}}`}
+            ></img>
+            <h3>{peril.title}</h3>
+            <p>{peril.description}</p>
+            <ul>
+              {peril.covered.map((coveredItem) => (
+                <li key={coveredItem}>✅ {coveredItem}</li>
+              ))}
+            </ul>
+            <ul>
+              {peril.exceptions.map((exceptionItem) => (
+                <li key={exceptionItem}>❌ {exceptionItem}</li>
+              ))}
+            </ul>
+          </div>
         </Dialog>
       ) : null}
     </>

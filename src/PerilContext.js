@@ -15,7 +15,7 @@ const initialState = {
   data: {},
 };
 
-const PerilReducer = (state, { type, payload }) => {
+const perilReducer = (state, { type, payload }) => {
   switch (type) {
     case Status.loading:
       return { ...state, status: Status.loading };
@@ -27,7 +27,7 @@ const PerilReducer = (state, { type, payload }) => {
 };
 
 export const PerilContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(PerilReducer, initialState);
+  const [state, dispatch] = useReducer(perilReducer, initialState);
 
   useEffect(() => {
     fetch(perilUrl)
