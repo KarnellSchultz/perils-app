@@ -2,6 +2,8 @@
 
 Thanks for checking out my project. Hope you enjoy :-)
 
+If you'd like to quickly see the app running check it out [here](https://lucid-lamarr-98321c.netlify.app)
+
 ## What this App looks like
 
 ### Landing page

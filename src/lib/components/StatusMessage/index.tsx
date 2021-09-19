@@ -38,7 +38,6 @@ type ReactNode = { children: ReactElement<any, any> };
 
 const Loading = ({ children }: ReactNode) => {
   const status = useStatusMessageCtx();
-
   return status === ApplicationStatus.loading ? children : null;
 };
 
