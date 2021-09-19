@@ -10,7 +10,7 @@ If you'd like to quickly see the app running check it out [here](https://lucid-l
 
 Added the PerilService to improve the fetching experience of the application. Using this service provides a more fully featured and customizable fetch request. It also has a eye twords the future and can eaisly be added onto for other services, aka not just a "GET" request.
 
-These functions have code comments to help explain what each part is doing and how they could be used or changed. 
+These functions have code comments to help explain what each part is doing and how they could be used or changed.
 
 ### `<StatusMessage />` Component
 
@@ -24,9 +24,11 @@ export const ApplicationStatus = {
 } as const;
 ```
 
+This is a great example of how I like to use React Context to create components in a way that encourages composability rather than passing props down to compoents for them to render UI elements.
+
 ### Close button on Modal
 
-The `<Modal />` component has a new close button. It can be used to close the button along with clicking outside of the modal area or the ESC key. 
+The `<Modal />` component has a new close button. It can be used to close the button along with clicking outside of the modal area or the ESC key.
 
 ### TypeScript Support
 
@@ -70,6 +72,7 @@ git version 2.21.1 (Apple Git-122.3)
 4. `yarn dev`
 
 ## Scripts
+
 ### `yarn dev`
 
 Runs the app in the development mode.\
