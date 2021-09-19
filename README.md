@@ -4,6 +4,32 @@ Thanks for checking out my project. Hope you enjoy :-)
 
 If you'd like to quickly see the app running check it out [here](https://lucid-lamarr-98321c.netlify.app)
 
+## What's new?
+
+### New Fetching API
+
+Added the PerilService to improve the fetching experience of the application. Using this service provides a more fully featured and customizable fetch request. It also has a eye twords the future and can eaisly be added onto for other services, aka not just a "GET" request.
+
+### `<StatusMessage />` Component
+
+This component displays the current status of the application. It's used to show one of the following application states:
+
+```
+export const ApplicationStatus = {
+  loading: "LOADING",
+  error: "ERROR",
+  ready: "READY",
+} as const;
+```
+
+### TypeScript Support
+
+Added TS to the project!
+
+## Prettier Support
+
+New Scripts `yarn prettier:check` `yarn prettier:fix`
+
 ## What this App looks like
 
 ### Landing page

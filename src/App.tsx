@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 
-import { Modal } from "./Modal";
+import { createAPIClient } from "./lib/api/client";
+import { ApplicationStatus, ApplicationStatusType, Peril } from "./AppTypes";
+
 import {
   HeadingContainer,
   Heading,
@@ -8,36 +10,8 @@ import {
   Card,
   SvgIcon,
 } from "./AppStyles";
-import { createAPIClient } from "./lib/api/client";
-import { StatusMessage } from "./lib/components/StatusMessage";
-
-export const ApplicationStatus = {
-  loading: "LOADING",
-  error: "ERROR",
-  ready: "READY",
-} as const;
-
-export type ApplicationStatusType =
-  typeof ApplicationStatus[keyof typeof ApplicationStatus];
-
-export type Peril = {
-  covered: string[];
-  description: string;
-  exceptions: string[];
-  info: string;
-  shortDescription: string;
-  title: string;
-  icon: {
-    variants: {
-      dark: {
-        svgUrl: string;
-      };
-      light: {
-        svgUrl: string;
-      };
-    };
-  };
-};
+import { Modal } from "./components/Modal/Modal";
+import { StatusMessage } from "./components/StatusMessage";
 
 function App() {
   const [perils, setPerils] = useState<Peril[]>([]);

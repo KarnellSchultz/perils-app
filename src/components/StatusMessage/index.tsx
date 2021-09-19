@@ -5,7 +5,7 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import { ApplicationStatus, ApplicationStatusType } from "../../../App";
+import { ApplicationStatus, ApplicationStatusType } from "../../App";
 
 const StatusMessageCtx = createContext<ApplicationStatusType>("LOADING");
 

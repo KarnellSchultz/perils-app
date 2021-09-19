@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { Dialog } from "@reach/dialog";
-import { Peril } from "./App";
+import { Peril } from "../../AppTypes";
 
 const DialogContent = styled.div`
   border-radius: 0.375rem;

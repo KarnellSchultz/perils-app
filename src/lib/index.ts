@@ -18,8 +18,12 @@ export interface PerilService {
 
 export type ListPerilResponse = Peril[];
 
+// fetch request detials
 type RequestHandler = (request: Request) => Promise<unknown>;
 
+// PerilServiceClient only has once service now, but it's setup in a way that would
+// allow for others to be added without much trouble. I could imagine a new Service for each HTTP method
+// or a new service for getting a specific peril ect.
 export const createPerilServiceClient = (
   handler: RequestHandler
 ): PerilService => {
