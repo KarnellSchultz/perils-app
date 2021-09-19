@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { Dialog } from "@reach/dialog";
+import { Peril } from "./App";
 
 const DialogContent = styled.div`
   border-radius: 0.375rem;
@@ -28,7 +29,13 @@ const Description = styled.p`
   line-height: 1.3;
 `;
 
-export const Modal = ({ peril, close, showDialog }) => {
+type ModalType = {
+  peril: Peril;
+  close: () => void;
+  showDialog: boolean;
+};
+
+export const Modal = ({ peril, close, showDialog }: ModalType) => {
   return (
     <>
       {showDialog ? (
@@ -53,7 +60,7 @@ export const Modal = ({ peril, close, showDialog }) => {
               ))}
             </ul>
             <ul>
-              {peril.exceptions.map((exceptionItem) => (
+              {peril.execptions.map((exceptionItem) => (
                 <li key={exceptionItem}>❌ {exceptionItem}</li>
               ))}
             </ul>
