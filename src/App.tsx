@@ -1,8 +1,24 @@
 import { useEffect, useState } from "react";
 
 import { Modal } from "./Modal";
-import { HeadingContainer, Heading, Container, Card, SvgIcon } from "./Styles";
+import {
+  HeadingContainer,
+  Heading,
+  Container,
+  Card,
+  SvgIcon,
+} from "./AppStyles";
 import { createAPIClient } from "./lib/api/client";
+import { StatusMessage } from "./lib/components/StatusMessage";
+
+export const ApplicationStatus = {
+  loading: "LOADING",
+  error: "ERROR",
+  ready: "READY",
+} as const;
+
+export type ApplicationStatusType =
+  typeof ApplicationStatus[keyof typeof ApplicationStatus];
 
 export type Peril = {
   covered: string[];
@@ -23,16 +39,10 @@ export type Peril = {
   };
 };
 
-enum ApplicationStatus {
-  Loading = "LOADING",
-  Error = "ERROR",
-  Ready = "READY",
-}
-
 function App() {
   const [perils, setPerils] = useState<Peril[]>([]);
-  const [status, setStatus] = useState<ApplicationStatus>(
-    ApplicationStatus.Loading
+  const [status, setStatus] = useState<ApplicationStatusType>(
+    ApplicationStatus.loading
   );
 
   const [modalContent, setModalContent] = useState<Peril>(null!);
@@ -45,21 +55,19 @@ function App() {
       // contractType: "BREAKIT", // uncomment this line to break the fetch request
     }).then((apiResponseData) => {
       setPerils(apiResponseData);
-      setStatus(ApplicationStatus.Ready);
+      setStatus(ApplicationStatus.ready);
     });
   }, []);
 
-  const isError = status === ApplicationStatus.Ready && !perils.length;
+  const isError = status === ApplicationStatus.ready && !perils.length;
 
   useEffect(() => {
     if (isError) {
-      setStatus(ApplicationStatus.Error);
+      setStatus(ApplicationStatus.error);
     }
   }, [isError, perils.length, status]);
 
   const close = () => setShowDialog(false);
-
-  const errorUi = () => <p>{`There was an internal error`}</p>;
 
   return (
     <>
@@ -76,15 +84,17 @@ function App() {
         </Heading>
       </HeadingContainer>
 
-      {showDialog ? (
-        <Modal showDialog={showDialog} close={close} peril={modalContent} />
-      ) : null}
-
-      {status === ApplicationStatus.Error ? errorUi() : null}
-      {status === ApplicationStatus.Loading ? <h3>Loading . . . </h3> : null}
+      <StatusMessage status={status}>
+        <StatusMessage.Error>
+          <h3>Oh Snap! There was an internal server error!</h3>
+        </StatusMessage.Error>
+        <StatusMessage.Loading>
+          <h3>Loading perils now . . . </h3>
+        </StatusMessage.Loading>
+      </StatusMessage>
 
       <Container>
-        {perils.length > 0 && ApplicationStatus.Ready
+        {perils.length > 0 && ApplicationStatus.ready
           ? perils?.map((peril) => (
               <Card
                 onClick={() => {
@@ -104,6 +114,9 @@ function App() {
             ))
           : null}
       </Container>
+      {showDialog ? (
+        <Modal showDialog={showDialog} close={close} peril={modalContent} />
+      ) : null}
     </>
   );
 }

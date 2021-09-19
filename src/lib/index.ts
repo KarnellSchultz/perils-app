@@ -13,6 +13,7 @@ export type ListPerilRequest = {
 export interface PerilService {
   //List Perils
   ListPerils(request: ListPerilRequest): Promise<ListPerilResponse>;
+  // Other services would be added here like a POST or UPDATE type of service
 }
 
 export type ListPerilResponse = Peril[];
