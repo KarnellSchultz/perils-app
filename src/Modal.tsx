@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 import { Dialog } from "@reach/dialog";
@@ -29,13 +28,26 @@ const Description = styled.p`
   line-height: 1.3;
 `;
 
-type ModalType = {
+const CloseButton = styled.button`
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  height: 50px;
+  border: 1px solid #82828231;
+  border-radius: 100%;
+  background-color: #8080802e;
+  :hover {
+    background-color: #d7d7d72c;
+  }
+`;
+
+type ModalProps = {
   peril: Peril;
   close: () => void;
   showDialog: boolean;
 };
 
-export const Modal = ({ peril, close, showDialog }: ModalType) => {
+export const Modal = ({ peril, close, showDialog }: ModalProps) => {
   return (
     <>
       {showDialog ? (
@@ -60,11 +72,12 @@ export const Modal = ({ peril, close, showDialog }: ModalType) => {
               ))}
             </ul>
             <ul>
-              {peril.execptions.map((exceptionItem) => (
+              {peril.exceptions.map((exceptionItem) => (
                 <li key={exceptionItem}>❌ {exceptionItem}</li>
               ))}
             </ul>
           </DialogContent>
+          <CloseButton onClick={close}>Close</CloseButton>
         </Dialog>
       ) : null}
     </>

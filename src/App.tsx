@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Modal } from "./Modal";
 import { HeadingContainer, Heading, Container, Card, SvgIcon } from "./Styles";
@@ -7,7 +7,7 @@ import { createAPIClient } from "./lib/api/client";
 export type Peril = {
   covered: string[];
   description: string;
-  execptions: string[];
+  exceptions: string[];
   info: string;
   shortDescription: string;
   title: string;
@@ -31,12 +31,12 @@ enum ApplicationStatus {
 
 function App() {
   const [perils, setPerils] = useState<Peril[]>([]);
-
-  const [modalContent, setModalContent] = useState<Peril>();
-  const [showDialog, setShowDialog] = useState(false);
   const [status, setStatus] = useState<ApplicationStatus>(
     ApplicationStatus.Loading
   );
+
+  const [modalContent, setModalContent] = useState<Peril>(null!);
+  const [showDialog, setShowDialog] = useState(false);
 
   useEffect(() => {
     const api = createAPIClient();

@@ -20,7 +20,7 @@ export const createRequestHandler =
     return fetch(request).then(async (response) => {
       if (response.status !== 200) {
         const responseBody = await response.json();
-        return new Error(responseBody[0].message);
+        return new Error(responseBody.message);
       }
 
       const data = await response.json();
