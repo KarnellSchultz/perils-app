@@ -10,6 +10,8 @@ If you'd like to quickly see the app running check it out [here](https://lucid-l
 
 Added the PerilService to improve the fetching experience of the application. Using this service provides a more fully featured and customizable fetch request. It also has a eye twords the future and can eaisly be added onto for other services, aka not just a "GET" request.
 
+These functions have code comments to help explain what each part is doing and how they could be used or changed. 
+
 ### `<StatusMessage />` Component
 
 This component displays the current status of the application. It's used to show one of the following application states:
@@ -21,6 +23,10 @@ export const ApplicationStatus = {
   ready: "READY",
 } as const;
 ```
+
+### Close button on Modal
+
+The `<Modal />` component has a new close button. It can be used to close the button along with clicking outside of the modal area or the ESC key. 
 
 ### TypeScript Support
 
@@ -63,6 +69,7 @@ git version 2.21.1 (Apple Git-122.3)
 3. `yarn install`
 4. `yarn dev`
 
+## Scripts
 ### `yarn dev`
 
 Runs the app in the development mode.\
