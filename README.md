@@ -1,5 +1,7 @@
 ## Intro
 
+## [Live App](https://lucid-lamarr-98321c.netlify.app)
+
 Thanks for checking out my project. Hope you enjoy :-)
 
 If you'd like to quickly see the app running check it out [here](https://lucid-lamarr-98321c.netlify.app)
